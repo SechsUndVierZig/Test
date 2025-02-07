@@ -43,6 +43,11 @@ public class QuestionAnswerProgram {
         System.out.print("Enter your question: ");
         String question = scanner.nextLine().trim().toLowerCase();
 
+        if (!question.endsWith("?")) {
+            System.out.println("Invalid format. The question must end with a question mark (?).");
+            return;
+        }
+
         // check if question length > 255
         if (question.length() > 255) {
             System.out.println("Question exceeds 255 characters. Please try again.");
