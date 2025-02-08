@@ -9,13 +9,13 @@ import java.io.PrintStream;
 
 public class test {
 
-    // Вспомогательный метод для симуляции пользовательского ввода
+    // input simulation (System.in)
     private void provideInput(String data) {
         InputStream inputStream = new ByteArrayInputStream(data.getBytes());
         System.setIn(inputStream);
     }
 
-    // Вспомогательный метод для захвата вывода программы
+    // output simulation (System.out)
     private String captureOutput(Runnable code) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
@@ -27,7 +27,7 @@ public class test {
         return outputStream.toString().trim();
     }
 
-    // Тесты для начального выбора (1, 2, 3)
+    // testing choices (1,2,3)
     @Test
     void testInitialChoiceAskQuestion() {
         provideInput("1\nWhat is Peters favorite food?\n3\n");
@@ -55,7 +55,7 @@ public class test {
                 "Expected exit message not found.");
     }
 
-    // Тесты для функции askQuestion
+    // testing askQuestion
     @Test
     void testAskQuestionValid() {
         provideInput("2\nWhat is Peters favorite food? \"Pizza\" \"Spaghetti\"\n1\nWhat is Peters favorite food?\n3\n");
@@ -88,7 +88,7 @@ public class test {
                 "Expected default answer not found.");
     }
 
-    // Тесты для функции addQuestion
+    // testing addQuestion
     @Test
     void testAddQuestionInvalidFormat() {
         provideInput("2\nWhat is Peters favorite food Pizza Spaghetti\n3\n");
