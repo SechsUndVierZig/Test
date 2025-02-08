@@ -71,11 +71,11 @@ public class test {
 
     @Test
     void testAskQuestionTooLong() {
-        String longQuestion = "a".repeat(256);
+        String longQuestion = "a".repeat(256) + "?";
         provideInput("1\n" + longQuestion + "\n3\n");
         String output = captureOutput(() -> QuestionAnswerProgram.main(new String[]{}));
 
-        assertTrue(output.contains("Question exceeds 255 characters"),
+        assertTrue(output.contains("Question exceeds 255 characters. Please try again."),
                 "Expected error message for long question not found.");
     }
 
